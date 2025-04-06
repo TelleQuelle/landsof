@@ -1,1 +1,56 @@
-/* CSS стили для компонента */
+/* client/src/styles/InventoryScreen.css */
+.inventory-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+    background-color: var(--color-dark);
+    background-image: url('../assets/images/backgrounds/inventory-background.png');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .inventory-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text);
+    text-shadow: 0 0 15px rgba(122, 56, 56, 0.8);
+    text-align: center;
+  }
+  
+  .inventory-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  .inventory-tab {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    background-color: rgba(14, 14, 18, 0.85);
+    color: var(--color-text);
+    font-size: 1.25rem;
+    border-radius: var(--radius-medium) var(--radius-medium) 0 0;
+    transition: all var(--transition-fast);
+    text-align: center;
+    border: 1px solid var(--color-secondary);
+    border-bottom: none;
+  }
+  
+  .inventory-content {
+    width: 100%;
+    max-width: 1000px;
+    min-height: 500px;
+    background-color: rgba(14, 14, 18, 0.85);
+    border-radius: 0 var(--radius-medium) var(--radius-medium) var(--radius-medium);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-large);
+    border: 1px solid var(--color-primary);
+  }

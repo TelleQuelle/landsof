@@ -1,5 +1,15 @@
 // client/src/constants/dice.js
 
+import {
+  carelessnessDice,
+  greedDice,
+  discordDice,
+  lustDice,
+  powerDice,
+  peaceDice,
+  basicDice
+} from '../assets';
+
 // Значения на кубиках
 export const DICE_VALUES = {
     CARELESSNESS: 'carelessness', // Беззаботность (бокал вина)
@@ -22,12 +32,12 @@ export const DICE_VALUES = {
   
   // Изображения для каждого значения кубика
   export const DICE_IMAGES = {
-    [DICE_VALUES.CARELESSNESS]: '/images/dice/carelessness.png', // Бокал вина
-    [DICE_VALUES.GREED]: '/images/dice/greed.png', // Золотые слитки
-    [DICE_VALUES.DISCORD]: '/images/dice/discord.png', // Капля крови
-    [DICE_VALUES.LUST]: '/images/dice/lust.png', // Сердце
-    [DICE_VALUES.POWER]: '/images/dice/power.png', // Корона
-    [DICE_VALUES.PEACE]: '/images/dice/peace.png' // Дом
+    [DICE_VALUES.CARELESSNESS]: carelessnessDice, // Бокал вина
+    [DICE_VALUES.GREED]: greedDice, // Золотые слитки
+    [DICE_VALUES.DISCORD]: discordDice, // Капля крови
+    [DICE_VALUES.LUST]: lustDice, // Сердце
+    [DICE_VALUES.POWER]: powerDice, // Корона
+    [DICE_VALUES.PEACE]: peaceDice // Дом
   };
   
   // Базовые кубики с равномерным распределением
@@ -35,7 +45,7 @@ export const DICE_VALUES = {
     id: 'base_dice',
     name: 'Basic Dice',
     description: 'A standard six-sided dice with sins and virtues.',
-    image: '/images/dice/basic_dice.png',
+    image: basicDice,
     values: [
       DICE_VALUES.CARELESSNESS,
       DICE_VALUES.GREED,

@@ -1,1 +1,182 @@
-/* CSS стили для компонента */
+/* client/src/styles/CombinationDisplay.css */
+.combination-display {
+    background-color: rgba(14, 14, 18, 0.85);
+    border-radius: var(--radius-medium);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-medium);
+    border: 1px solid var(--color-primary);
+  }
+  
+  .combination-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .combination-header h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .rules-button {
+    padding: 0.5rem 1rem;
+    background-color: rgba(66, 66, 85, 0.5);
+    color: var(--color-text);
+    font-size: 0.875rem;
+    border-radius: var(--radius-small);
+    transition: all var(--transition-fast);
+  }
+  
+  .rules-button:hover {
+    background-color: rgba(66, 66, 85, 0.7);
+  }
+  
+  .rules-container {
+    margin-bottom: 1rem;
+  }
+  
+  .rules-container h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+  }
+  
+  .rules-container p {
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+  }
+  
+  .rules-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .rule-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background-color: rgba(20, 20, 30, 0.5);
+    border-radius: var(--radius-small);
+    border: 1px solid var(--color-secondary);
+  }
+  
+  .rule-dice {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 100px;
+  }
+  
+  .rule-dice-image {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .rule-dice span {
+    font-size: 0.875rem;
+    color: var(--color-text);
+  }
+  
+  .rule-cards {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .rule-card-name {
+    padding: 0.25rem 0.5rem;
+    background-color: rgba(122, 56, 56, 0.3);
+    border-radius: var(--radius-small);
+    font-size: 0.75rem;
+    color: var(--color-text);
+    border: 1px solid var(--color-primary);
+  }
+  
+  .rule-points {
+    font-size: 0.875rem;
+    color: var(--color-accent);
+    font-weight: 500;
+    min-width: 100px;
+    text-align: right;
+  }
+  
+  .multipliers-list {
+    margin-bottom: 1.5rem;
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .multipliers-list li {
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--color-text);
+  }
+  
+  .multiplier-card-name {
+    font-weight: 500;
+    color: var(--color-accent);
+  }
+  
+  .multiplier-value {
+    margin-left: 0.5rem;
+  }
+  
+  .risk-info {
+    padding: 0.75rem;
+    background-color: rgba(180, 145, 54, 0.1);
+    border-radius: var(--radius-small);
+    border-left: 3px solid var(--color-warning);
+    font-size: 0.875rem;
+    color: var(--color-text);
+  }
+  
+  .current-combination {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .selected-dice-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    background-color: rgba(20, 20, 30, 0.5);
+    border-radius: var(--radius-small);
+    border: 1px solid var(--color-primary);
+  }
+  
+  .selected-dice-image {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .valid-cards-display, .point-value-display, .multipliers-display {
+    padding: 1rem;
+    background-color: rgba(20, 20, 30, 0.5);
+    border-radius: var(--radius-small);
+    border: 1px solid var(--color-secondary);
+  }
+  
+  .turn-score-display {
+    padding: 1rem;
+    background-color: rgba(122, 56, 56, 0.3);
+    border-radius: var(--radius-small);
+    border: 1px solid var(--color-primary);
+    text-align: center;
+  }
+  
+  .turn-score-value {
+    font-size: 2rem;
+    color: var(--color-text);
+    font-weight: 700;
+  }

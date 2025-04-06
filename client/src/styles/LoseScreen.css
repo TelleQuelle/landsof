@@ -1,1 +1,67 @@
-/* CSS стили для компонента */
+/* client/src/styles/LoseScreen.css */
+.lose-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+    background-color: var(--color-dark);
+    background-image: url('../assets/images/backgrounds/lose-background.png');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .defeat-title {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--color-error);
+    text-shadow: 0 0 20px rgba(182, 67, 67, 0.8);
+    text-align: center;
+    animation: defeat-glow 2s infinite alternate;
+  }
+  
+  @keyframes defeat-glow {
+    from {
+      text-shadow: 0 0 10px rgba(182, 67, 67, 0.8);
+    }
+    to {
+      text-shadow: 0 0 30px rgba(182, 67, 67, 0.8), 0 0 50px rgba(182, 67, 67, 0.4);
+    }
+  }
+  
+  .defeat-message {
+    text-align: center;
+    margin-bottom: 2rem;
+    max-width: 800px;
+  }
+  
+  .defeat-message p {
+    font-size: 1.5rem;
+    color: var(--color-text);
+  }
+  
+  .progress-section, .tips-section {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 2rem;
+    background-color: rgba(14, 14, 18, 0.85);
+    border-radius: var(--radius-medium);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-medium);
+  }
+  
+  .tips-list {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin: 0;
+  }
+  
+  .retry-button, .back-button {
+    padding: 0.75rem 2rem;
+    font-size: 1.1rem;
+    border-radius: var(--radius-medium);
+    transition: all var(--transition-fast);
+    box-shadow: var(--shadow-small);
+  }

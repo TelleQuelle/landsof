@@ -1,5 +1,28 @@
 // client/src/constants/cards.js
 
+import {
+  knightCard,
+  witchCard,
+  princessCard,
+  kingCard,
+  dwarfCard,
+  skeletonMageCard,
+  skeletonWarriorCard,
+  vikingCard,
+  demonCard,
+  hunterCard,
+  thiefCard,
+  druidCard,
+  bardCard,
+  monkCard,
+  executionerCard,
+  werewolfCard,
+  alchemistCard,
+  cultistCard,
+  plagueDoctorCard,
+  peasantCard
+} from '../assets';
+
 // Базовые карты персонажей
 export const CARD_TYPES = {
     KNIGHT: 'knight',
@@ -54,121 +77,121 @@ export const CARD_TYPES = {
       id: 1,
       type: CARD_TYPES.KNIGHT,
       name: CARD_NAMES[CARD_TYPES.KNIGHT],
-      image: '/assets/images/cards/knight.png'
+      image: knightCard
     },
     {
       id: 2,
       type: CARD_TYPES.WITCH,
       name: CARD_NAMES[CARD_TYPES.WITCH],
-      image: '/assets/images/cards/witch.png'
+      image: witchCard
     },
     {
       id: 3,
       type: CARD_TYPES.PRINCESS,
       name: CARD_NAMES[CARD_TYPES.PRINCESS],
-      image: '/assets/images/cards/princess.png'
+      image: princessCard
     },
     {
       id: 4,
       type: CARD_TYPES.KING,
       name: CARD_NAMES[CARD_TYPES.KING],
-      image: '/assets/images/cards/king.png'
+      image: kingCard
     },
     {
       id: 5,
       type: CARD_TYPES.DWARF,
       name: CARD_NAMES[CARD_TYPES.DWARF],
-      image: '/assets/images/cards/dwarf.png'
+      image: dwarfCard
     },
     {
       id: 6,
       type: CARD_TYPES.SKELETON_MAGE,
       name: CARD_NAMES[CARD_TYPES.SKELETON_MAGE],
-      image: '/assets/images/cards/skeleton_mage.png'
+      image: skeletonMageCard
     },
     {
       id: 7,
       type: CARD_TYPES.SKELETON_WARRIOR,
       name: CARD_NAMES[CARD_TYPES.SKELETON_WARRIOR],
-      image: '/assets/images/cards/skeleton_warrior.png'
+      image: skeletonWarriorCard
     },
     {
       id: 8,
       type: CARD_TYPES.VIKING,
       name: CARD_NAMES[CARD_TYPES.VIKING],
-      image: '/assets/images/cards/viking.png'
+      image: vikingCard
     },
     {
       id: 9,
       type: CARD_TYPES.DEMON,
       name: CARD_NAMES[CARD_TYPES.DEMON],
-      image: '/assets/images/cards/demon.png'
+      image: demonCard
     },
     {
       id: 10,
       type: CARD_TYPES.HUNTER,
       name: CARD_NAMES[CARD_TYPES.HUNTER],
-      image: '/assets/images/cards/hunter.png'
+      image: hunterCard
     },
     {
       id: 11,
       type: CARD_TYPES.THIEF,
       name: CARD_NAMES[CARD_TYPES.THIEF],
-      image: '/images/cards/thief.png'
+      image: thiefCard
     },
     {
       id: 12,
       type: CARD_TYPES.DRUID,
       name: CARD_NAMES[CARD_TYPES.DRUID],
-      image: '/images/cards/druid.png'
+      image: druidCard
     },
     {
       id: 13,
       type: CARD_TYPES.BARD,
       name: CARD_NAMES[CARD_TYPES.BARD],
-      image: '/images/cards/bard.png'
+      image: bardCard
     },
     {
       id: 14,
       type: CARD_TYPES.MONK,
       name: CARD_NAMES[CARD_TYPES.MONK],
-      image: '/images/cards/monk.png'
+      image: monkCard
     },
     {
       id: 15,
       type: CARD_TYPES.EXECUTIONER,
       name: CARD_NAMES[CARD_TYPES.EXECUTIONER],
-      image: '/images/cards/executioner.png'
+      image: executionerCard
     },
     {
       id: 16,
       type: CARD_TYPES.WEREWOLF,
       name: CARD_NAMES[CARD_TYPES.WEREWOLF],
-      image: '/images/cards/werewolf.png'
+      image: werewolfCard
     },
     {
       id: 17,
       type: CARD_TYPES.ALCHEMIST,
       name: CARD_NAMES[CARD_TYPES.ALCHEMIST],
-      image: '/images/cards/alchemist.png'
+      image: alchemistCard
     },
     {
       id: 18,
       type: CARD_TYPES.CULTIST,
       name: CARD_NAMES[CARD_TYPES.CULTIST],
-      image: '/images/cards/cultist.png'
+      image: cultistCard
     },
     {
       id: 19,
       type: CARD_TYPES.PLAGUE_DOCTOR,
       name: CARD_NAMES[CARD_TYPES.PLAGUE_DOCTOR],
-      image: '/images/cards/plague_doctor.png'
+      image: plagueDoctorCard
     },
     {
       id: 20,
       type: CARD_TYPES.PEASANT,
       name: CARD_NAMES[CARD_TYPES.PEASANT],
-      image: '/images/cards/peasant.png'
+      image: peasantCard
     }
   ];
   

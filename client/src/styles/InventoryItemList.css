@@ -1,1 +1,57 @@
-/* CSS стили для компонента */
+/* client/src/styles/InventoryItemList.css */
+.inventory-item-list {
+    margin-bottom: 2rem;
+  }
+  
+  .inventory-list-title {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .inventory-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 1rem;
+  }
+  
+  .inventory-item {
+    background-color: rgba(20, 20, 30, 0.5);
+    border-radius: var(--radius-small);
+    border: 1px solid var(--color-secondary);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    position: relative;
+  }
+  
+  .inventory-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-small);
+  }
+  
+  .inventory-item.selected {
+    border-width: 2px;
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+  }
+  
+  .view-details-button {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.25rem;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: var(--color-text);
+    font-size: 0.75rem;
+    text-align: center;
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+  }
+  
+  .inventory-item:hover .view-details-button {
+    opacity: 1;
+  }
