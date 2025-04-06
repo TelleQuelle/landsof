@@ -1,0 +1,399 @@
+/* client/src/styles/WalletConnect.css */
+.wallet-connect-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+    text-align: center;
+    background-image: url('../assets/images/backgrounds/auth-background.png');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .wallet-connect-container h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--color-text);
+    text-shadow: 0 0 20px rgba(122, 56, 56, 0.8);
+  }
+  
+  .wallet-connect-container p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    color: var(--color-text-muted);
+    max-width: 600px;
+  }
+  
+  .wallet-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .wallet-button-wrapper {
+    width: 240px;
+  }
+  
+  /* Переопределение стилей для кнопки кошелька Solana */
+  .wallet-adapter-button {
+    background-color: var(--color-primary) !important;
+    color: var(--color-text) !important;
+    font-family: 'DreiFraktur', serif !important;
+    font-size: 1rem !important;
+    border-radius: var(--radius-medium) !important;
+    height: auto !important;
+    padding: 1rem !important;
+    transition: all var(--transition-fast) !important;
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  
+  .wallet-adapter-button:hover {
+    background-color: var(--color-primary-dark) !important;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+  }
+  
+  .wallet-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .wallet-links p {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .wallet-redirect-buttons {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .wallet-redirect-button {
+    padding: 0.5rem 1rem;
+    background-color: rgba(14, 14, 18, 0.7);
+    border: 1px solid var(--color-secondary);
+    border-radius: var(--radius-small);
+    color: var(--color-text);
+    font-size: 0.875rem;
+    transition: all var(--transition-fast);
+  }
+  
+  .wallet-redirect-button:hover {
+    background-color: rgba(20, 20, 25, 0.8);
+    transform: translateY(-2px);
+  }
+  
+  .wallet-redirect-button.phantom {
+    border-color: #9945FF;
+  }
+  
+  .wallet-redirect-button.solflare {
+    border-color: #FE9900;
+  }
+  
+  .error-message {
+    color: var(--color-error);
+    margin-top: 1rem;
+    font-size: 1rem;
+  }
+  
+  .wallet-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background-color: rgba(14, 14, 18, 0.7);
+    border-radius: var(--radius-medium);
+    margin-top: 2rem;
+  }
+  
+  .wallet-info p {
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+  
+  .disconnect-button {
+    padding: 0.5rem 1rem;
+    background-color: var(--color-error);
+    color: var(--color-text);
+    font-size: 0.875rem;
+    border-radius: var(--radius-small);
+    transition: all var(--transition-fast);
+  }
+  
+  .disconnect-button:hover {
+    background-color: #a53838;
+  }
+  
+  /* client/src/styles/UsernameInput.css */
+  .username-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+    text-align: center;
+    background-image: url('../assets/images/backgrounds/username-background.png');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .username-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text);
+    text-shadow: 0 0 15px rgba(122, 56, 56, 0.8);
+  }
+  
+  .wallet-address {
+    font-family: monospace;
+    background-color: rgba(14, 14, 18, 0.7);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-small);
+    margin-bottom: 2rem;
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+  }
+  
+  .input-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 2rem;
+  }
+  
+  .username-input {
+    width: 100%;
+    padding: 1rem;
+    padding-left: 1.5rem;
+    background-color: rgba(10, 10, 15, 0.6);
+    border: 2px solid var(--color-secondary);
+    border-radius: var(--radius-medium);
+    color: var(--color-text);
+    font-size: 1.25rem;
+    transition: all var(--transition-fast);
+    box-shadow: var(--shadow-medium);
+    text-align: center;
+  }
+  
+  .username-input:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(183, 130, 54, 0.3);
+  }
+  
+  .start-button {
+    padding: 0.75rem 2rem;
+    background-color: var(--color-primary);
+    color: var(--color-text);
+    font-size: 1.25rem;
+    border-radius: var(--radius-medium);
+    transition: all var(--transition-fast);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    box-shadow: var(--shadow-medium);
+  }
+  
+  .start-button:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-large);
+  }
+  
+  .start-button:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-medium);
+  }
+  
+  /* client/src/styles/Tutorial.css */
+  .tutorial-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+    text-align: center;
+    background-color: var(--color-dark);
+  }
+  
+  .tutorial-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text);
+    text-shadow: 0 0 15px rgba(122, 56, 56, 0.8);
+  }
+  
+  .tutorial-image-container {
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 2rem;
+    border: 3px solid var(--color-primary);
+    border-radius: var(--radius-medium);
+    overflow: hidden;
+    box-shadow: var(--shadow-large);
+  }
+  
+  .tutorial-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .tutorial-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .tutorial-button {
+    padding: 0.75rem 2rem;
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+    font-size: 1.25rem;
+    border-radius: var(--radius-medium);
+    transition: all var(--transition-fast);
+    box-shadow: var(--shadow-small);
+  }
+  
+  .tutorial-button:hover {
+    background-color: var(--color-secondary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+  }
+  
+  .tutorial-button.complete-button {
+    background-color: var(--color-primary);
+  }
+  
+  .tutorial-button.complete-button:hover {
+    background-color: var(--color-primary-dark);
+  }
+  
+  .tutorial-progress {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  
+  .progress-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--color-secondary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+  
+  .progress-dot.active {
+    background-color: var(--color-primary);
+    transform: scale(1.2);
+  }
+  
+  /* client/src/styles/LoreScreen.css */
+  .lore-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+    text-align: center;
+    background-color: var(--color-dark);
+    background-image: url('../assets/images/backgrounds/lore-background.png');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .lore-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text);
+    text-shadow: 0 0 15px rgba(122, 56, 56, 0.8);
+  }
+  
+  .lore-image-container {
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 2rem;
+    border: 3px solid var(--color-primary);
+    border-radius: var(--radius-medium);
+    overflow: hidden;
+    box-shadow: var(--shadow-large);
+  }
+  
+  .lore-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .lore-paragraphs {
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 2rem;
+    background-color: rgba(14, 14, 18, 0.85);
+    padding: 1.5rem;
+    border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-medium);
+    text-align: left;
+  }
+  
+  .lore-paragraph {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--color-text);
+  }
+  
+  .lore-paragraph:last-child {
+    margin-bottom: 0;
+  }
+  
+  .lore-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .lore-button {
+    padding: 0.75rem 2rem;
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+    font-size: 1.25rem;
+    border-radius: var(--radius-medium);
+    transition: all var(--transition-fast);
+    box-shadow: var(--shadow-small);
+  }
+  
+  .lore-button:hover {
+    background-color: var(--color-secondary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+  }
+  
+  .lore-button.complete-button {
+    background-color: var(--color-primary);
+  }
+  
+  .lore-button.complete-button:hover {
+    background-color: var(--color-primary-dark);
+  }

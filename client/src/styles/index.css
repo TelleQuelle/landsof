@@ -1,0 +1,287 @@
+/* client/src/styles/index.css */
+@font-face {
+    font-family: 'DreiFraktur';
+    src: url('../assets/fonts/DreiFraktur.woff2') format('woff2'),
+         url('../assets/fonts/DreiFraktur.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  :root {
+    /* Основная цветовая палитра */
+    --color-dark: #0e0e12;
+    --color-darker: #07070a;
+    --color-primary: #7a3838;
+    --color-primary-dark: #622e2e;
+    --color-secondary: #59597e;
+    --color-accent: #b78236;
+    --color-accent-light: #d9a757;
+    --color-text: #e6e6e6;
+    --color-text-muted: #a0a0a0;
+    
+    /* Цвета для особых элементов */
+    --color-success: #4b7936;
+    --color-warning: #b49136;
+    --color-error: #b64343;
+    --color-locked: #686868;
+    
+    /* Тени */
+    --shadow-small: 0 2px 5px rgba(0, 0, 0, 0.5);
+    --shadow-medium: 0 4px 10px rgba(0, 0, 0, 0.6);
+    --shadow-large: 0 8px 20px rgba(0, 0, 0, 0.7);
+    
+    /* Скругления */
+    --radius-small: 4px;
+    --radius-medium: 8px;
+    --radius-large: 12px;
+    
+    /* Переходы */
+    --transition-fast: 0.2s ease;
+    --transition-medium: 0.3s ease;
+    --transition-slow: 0.5s ease;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    font-family: 'DreiFraktur', serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--color-text);
+    background-color: var(--color-dark);
+    background-image: url('../assets/images/backgrounds/main-background.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100%;
+    overflow-x: hidden;
+  }
+  
+  #root {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'DreiFraktur', serif;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+  
+  h3 {
+    font-size: 1.75rem;
+  }
+  
+  p {
+    margin-bottom: 1rem;
+  }
+  
+  a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+  
+  a:hover {
+    color: var(--color-accent-light);
+  }
+  
+  button {
+    font-family: 'DreiFraktur', serif;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    transition: all var(--transition-fast);
+  }
+  
+  /* Стили для основных кнопок */
+  .button-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--color-primary);
+    color: var(--color-text);
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-small);
+    transition: all var(--transition-fast);
+  }
+  
+  .button-primary:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+  }
+  
+  .button-primary:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-small);
+  }
+  
+  .button-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-small);
+    transition: all var(--transition-fast);
+  }
+  
+  .button-secondary:hover {
+    background-color: var(--color-secondary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+  }
+  
+  .button-secondary:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-small);
+  }
+  
+  /* Стили для контейнеров */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  /* Стили для панелей */
+  .panel {
+    background-color: rgba(14, 14, 18, 0.85);
+    border-radius: var(--radius-medium);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-medium);
+    border: 1px solid var(--color-secondary);
+  }
+  
+  /* Стили для полей ввода */
+  input, textarea, select {
+    font-family: 'DreiFraktur', serif;
+    width: 100%;
+    padding: 0.75rem;
+    background-color: rgba(10, 10, 15, 0.6);
+    border: 1px solid var(--color-secondary);
+    border-radius: var(--radius-small);
+    color: var(--color-text);
+    font-size: 1rem;
+    transition: all var(--transition-fast);
+  }
+  
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 2px rgba(183, 130, 54, 0.3);
+  }
+  
+  /* Стили для списков */
+  ul, ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Стили для заголовков страниц */
+  .page-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin: 2rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text);
+    text-shadow: 0 0 10px rgba(122, 56, 56, 0.8);
+  }
+  
+  /* Оверлей для модальных окон */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  /* Стили для модальных окон */
+  .modal {
+    background-color: var(--color-darker);
+    border-radius: var(--radius-medium);
+    padding: 2rem;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: var(--shadow-large);
+    border: 1px solid var(--color-primary);
+  }
+  
+  /* Стили для загрузки */
+  .loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  
+  .loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(122, 56, 56, 0.3);
+    border-radius: 50%;
+    border-top-color: var(--color-primary);
+    animation: spin 1s ease-in-out infinite;
+    margin-bottom: 1rem;
+  }
+  
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  
+  /* Стили для сообщений */
+  .message {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: var(--radius-small);
+    border-left: 4px solid;
+  }
+  
+  .message.success {
+    background-color: rgba(75, 121, 54, 0.1);
+    border-left-color: var(--color-success);
+  }
+  
+  .message.warning {
+    background-color: rgba(180, 145, 54, 0.1);
+    border-left-color: var(--color-warning);
+  }
+  
+  .message.error {
+    background-color: rgba(182, 67, 67, 0.1);
+    border-left-color: var(--color-error);
+  }

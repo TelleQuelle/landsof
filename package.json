@@ -1,0 +1,53 @@
+{
+  "name": "lands-of-nanti",
+  "version": "1.0.0",
+  "description": "A dark fantasy card and dice game integrated with Solana blockchain",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "server": "nodemon server/server.js",
+    "client": "cd client && npm start",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "build": "cd client && npm run build",
+    "install-all": "npm install && cd client && npm install",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+    "generate-backgrounds": "node scripts/backgroundGenerator.js"
+  },
+  "keywords": [
+    "solana",
+    "web3",
+    "game",
+    "cards",
+    "dice",
+    "nft"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@metaplex-foundation/mpl-token-metadata": "^2.9.0",
+    "@solana/spl-token": "^0.3.7",
+    "@solana/web3.js": "^1.66.0",
+    "bcrypt": "^5.1.0",
+    "bs58": "^5.0.0",
+    "canvas": "^3.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "fs-extra": "^11.3.0",
+    "jsonwebtoken": "^9.0.0",
+    "multer": "^1.4.5-lts.1",
+    "pg": "^8.10.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.30.0",
+    "tweetnacl": "^1.0.3",
+    "uuid": "^9.0.0",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.1",
+    "nodemon": "^2.0.22"
+  },
+  "engines": {
+    "node": "16.x"
+  }
+}
