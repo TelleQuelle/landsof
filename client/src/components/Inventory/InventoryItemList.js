@@ -1,6 +1,7 @@
 // client/src/components/Inventory/InventoryItemList.js
 import React from 'react';
 import '../../styles/InventoryItemList.css';
+import { knightCard, witchCard } from '../../assets';
 
 // Цвета для разных редкостей предметов
 const RARITY_COLORS = {
@@ -61,7 +62,7 @@ const InventoryItemList = ({
             >
               <div className="item-image-container">
                 <img 
-                  src={`/assets/images/cards/${item.type}.png`} 
+                  src={item.type === 'knight' ? knightCard : witchCard} 
                   alt={item.name} 
                   className="item-image"
                 />

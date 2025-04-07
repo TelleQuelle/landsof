@@ -140,10 +140,9 @@
   }
   
   .social-button {
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    background-color: rgba(14, 14, 18, 0.7);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -157,8 +156,8 @@
   }
   
   .social-button img {
-    width: 24px;
-    height: 24px;
+    width: 36px;
+    height: 36px;
   }
   
   .social-button.discord:hover {
@@ -508,20 +507,32 @@
     margin-bottom: 0;
   }
   
-  .level-buttons {
-    display: flex;
-    gap: 1.5rem;
-    margin-top: 1rem;
+  .level-buttons-table {
+    margin: 2rem auto;
+    display: flex; /* Use flexbox for alignment */
+    justify-content: center; /* Center buttons horizontally */
+    gap: 1.5rem; /* Add spacing between buttons */
+  }
+  
+  .level-buttons-table td {
+    padding: 0; /* Remove extra padding */
   }
   
   .level-button {
-    padding: 0.75rem 2rem;
+    width: 180px; /* Ensure consistent width */
+    height: 60px; /* Ensure consistent height */
     font-size: 1.25rem;
     border-radius: var(--radius-medium);
-    transition: all var(--transition-fast);
     text-transform: uppercase;
     letter-spacing: 0.1em;
     box-shadow: var(--shadow-medium);
+    transition: all var(--transition-fast);
+    cursor: pointer;
+    border: none;
+    outline: none;
+    display: flex; /* Center text inside buttons */
+    align-items: center;
+    justify-content: center;
   }
   
   .level-button.begin-button {
@@ -557,6 +568,11 @@
     box-shadow: var(--shadow-large);
   }
   
+  .level-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-large);
+  }
+
   /* client/src/styles/LevelLore.css */
   .level-lore-container {
     display: flex;

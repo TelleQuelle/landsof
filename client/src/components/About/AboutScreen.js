@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Tutorial from '../Tutorial/Tutorial';
 import LoreScreen from '../Lore/LoreScreen';
 import '../../styles/AboutScreen.css';
-import { mainBackground } from '../../assets';
+import { aboutBackground, discordIcon, twitterIcon } from '../../assets';
 
 const AboutScreen = () => {
   const navigate = useNavigate();
@@ -57,7 +57,7 @@ const AboutScreen = () => {
   }
 
   return (
-    <div className="about-screen">
+    <div className="about-screen" style={{ backgroundImage: `url(${aboutBackground})` }}>
       <h1 className="about-title">About Lands of Nanti</h1>
       
       <div className="about-content">
@@ -168,12 +168,10 @@ const AboutScreen = () => {
         <h2>Follow Us</h2>
         <div className="social-buttons">
           <a href="https://discord.gg/tdMWdrwCSD" target="_blank" rel="noopener noreferrer" className="social-button discord">
-            <img src={mainBackground.discordIcon} alt="Discord" />
-            Discord
+            <img src={discordIcon} alt="Discord" />
           </a>
           <a href="https://x.com/Nanti_NFT" target="_blank" rel="noopener noreferrer" className="social-button twitter">
-            <img src={mainBackground.twitterIcon} alt="Twitter" />
-            Twitter
+            <img src={twitterIcon} alt="Twitter" />
           </a>
         </div>
       </div>

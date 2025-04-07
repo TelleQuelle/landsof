@@ -1,6 +1,6 @@
 // src/assets/index.js
 
-// Фоны
+// Backgrounds
 import mainBackground from './images/backgrounds/main-background.png';
 import authBackground from './images/backgrounds/auth-background.png';
 import usernameBackground from './images/backgrounds/username-background.png';
@@ -16,20 +16,23 @@ import adminBackground from './images/backgrounds/admin-background.png';
 import airdropBackground from './images/backgrounds/airdrop-background.png';
 import inventoryBackground from './images/backgrounds/inventory-background.png';
 
-// UI элементы
+// UI Elements
 import silverCoin from './images/ui/silver-coin.png';
 import discordIcon from './images/ui/discord-icon.png';
 import twitterIcon from './images/ui/twitter-icon.png';
 import settingsIcon from './images/ui/settings-icon.png';
 import mainMenuImage from './images/ui/main-menu.png';
+import comingSoonIcon from './images/ui/coming-soon-icon.png';
+import campaignImage from './images/ui/campaign-image.png';
+import adventureImage from './images/ui/adventure-image.png';
 
-// Lore изображения
+// Lore Images
 import lore1 from './images/lore/lore-1.png';
 import lore2 from './images/lore/lore-2.png';
 import level1Part1 from './images/lore/level-1-1.png';
 import level1Part2 from './images/lore/level-1-2.png';
 
-// Карты
+// Cards
 import knightCard from './images/cards/knight.png';
 import witchCard from './images/cards/witch.png';
 import princessCard from './images/cards/princess.png';
@@ -51,7 +54,7 @@ import cultistCard from './images/cards/cultist.png';
 import plagueDoctorCard from './images/cards/plague_doctor.png';
 import peasantCard from './images/cards/peasant.png';
 
-// Кубики
+// Dice
 import carelessnessDice from './images/dice/carelessness.png';
 import greedDice from './images/dice/greed.png';
 import discordDice from './images/dice/discord.png';
@@ -60,9 +63,29 @@ import powerDice from './images/dice/power.png';
 import peaceDice from './images/dice/peace.png';
 import basicDice from './images/dice/basic_dice.png';
 
-// Экспортируем всё
+// Dice Skins
+import kingSkin from './images/dice/king-skin.png';
+import bloodDice from './images/dice/blood-dice.png';
+import oracleKing from './images/dice/oracle-king.png';
+import fortuneDice from './images/dice/fortune-dice.png';
+import witchSkin from './images/dice/witch-skin.png';
+import goldenDwarf from './images/dice/golden-dwarf.png';
+import emotionalDice from './images/dice/emotional-dice.png';
+import jokerBard from './images/dice/joker-bard.png';
+
+// Dice Images Mapping
+export const DICE_IMAGES = {
+  carelessness: carelessnessDice,
+  greed: greedDice,
+  discord: discordDice,
+  lust: lustDice,
+  power: powerDice,
+  peace: peaceDice,
+  basic: basicDice,
+};
+
+// Export everything
 export {
-  // Существующие экспорты
   mainBackground,
   authBackground,
   usernameBackground,
@@ -77,21 +100,18 @@ export {
   adminBackground,
   airdropBackground,
   inventoryBackground,
-  
-  // UI элементы
   silverCoin,
   discordIcon,
   twitterIcon,
   settingsIcon,
   mainMenuImage,
-  
-  // Lore изображения
+  comingSoonIcon,
+  campaignImage,
+  adventureImage,
   lore1,
   lore2,
   level1Part1,
   level1Part2,
-  
-  // Карты
   knightCard,
   witchCard,
   princessCard,
@@ -112,15 +132,21 @@ export {
   cultistCard,
   plagueDoctorCard,
   peasantCard,
-  
-  // Кубики
   carelessnessDice,
   greedDice,
   discordDice,
   lustDice,
   powerDice,
   peaceDice,
-  basicDice
+  basicDice,
+  kingSkin,
+  bloodDice,
+  oracleKing,
+  fortuneDice,
+  witchSkin,
+  goldenDwarf,
+  emotionalDice,
+  jokerBard
 };
 
-// Примечание: шрифты будут импортироваться в CSS
+// Note: Fonts will be imported in CSS

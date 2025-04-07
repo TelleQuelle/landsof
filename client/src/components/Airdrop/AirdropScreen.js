@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useWalletContext } from '../../context/WalletContext';
 import { getShortAddress } from '../../utils/web3';
-import { silverCoin } from '../../assets';
+import { airdropBackground, silverCoin, discordIcon, twitterIcon, comingSoonIcon } from '../../assets';
 import '../../styles/AirdropScreen.css';
 
 const AirdropScreen = () => {
@@ -63,7 +63,7 @@ const AirdropScreen = () => {
   };
 
   return (
-    <div className="airdrop-screen">
+    <div className="airdrop-screen" style={{ backgroundImage: `url(${airdropBackground})` }}>
       <h1 className="airdrop-title">Airdrop</h1>
       
       <div className="airdrop-banner">
@@ -109,7 +109,7 @@ const AirdropScreen = () => {
       
       <div className="airdrop-status">
         <div className="status-icon">
-          <img src="/images/ui/coming-soon-icon.png" alt="Coming Soon" />
+          <img src={comingSoonIcon} alt="Coming Soon" />
         </div>
         <h2 className="status-title">$SILVER Token Airdrop Coming Soon</h2>
         <p className="status-message">
@@ -158,12 +158,10 @@ const AirdropScreen = () => {
         </p>
         <div className="social-buttons">
           <a href="https://discord.gg/tdMWdrwCSD" target="_blank" rel="noopener noreferrer" className="social-button discord">
-            <img src="/images/ui/discord-icon.png" alt="Discord" />
-            Discord
+            <img src={discordIcon} alt="Discord" />
           </a>
           <a href="https://x.com/Nanti_NFT" target="_blank" rel="noopener noreferrer" className="social-button twitter">
-            <img src="/images/ui/twitter-icon.png" alt="Twitter" />
-            Twitter
+            <img src={twitterIcon} alt="Twitter" />
           </a>
         </div>
       </div>

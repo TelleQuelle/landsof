@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../styles/GameMenu.css';
+import { campaignImage, adventureImage } from '../../assets';
 
 const GameMenu = () => {
   const navigate = useNavigate();
@@ -42,14 +43,14 @@ const GameMenu = () => {
       <div className="game-options">
         <div className="game-option campaign" onClick={handleCampaignClick}>
           <div className="game-option-image">
-            <img src="/images/ui/campaign-image.png" alt="Campaign" />
+            <img src={campaignImage} alt="Campaign" />
           </div>
           <div className="game-option-title">Campaign</div>
         </div>
         
         <div className={`game-option adventure ${!isCampaignCompleted ? 'locked' : ''}`} onClick={handleAdventureClick}>
           <div className="game-option-image">
-            <img src="/images/ui/adventure-image.png" alt="Adventure" />
+            <img src={adventureImage} alt="Adventure" />
             {!isCampaignCompleted && (
               <div className="locked-overlay">
                 <span>Complete the campaign first</span>

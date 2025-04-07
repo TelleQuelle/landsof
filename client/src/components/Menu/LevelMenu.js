@@ -145,7 +145,7 @@ const LevelMenu = () => {
         </div>
       )}
       
-      <div className="level-buttons">
+      <div className="level-buttons-table">
         <button className="level-button begin-button" onClick={handleBeginClick}>
           Begin
         </button>

@@ -13,6 +13,7 @@ import { BASE_DECK } from '../../constants/cards';
 import { BASE_DICE, DICE_VALUES, DICE_VALUE_NAMES } from '../../constants/dice';
 import { calculateCombinationPoints, isCardValidForDiceValue } from '../../constants/combinations';
 import '../../styles/GamePlay.css';
+import { gameplayBackground } from '../../assets';
 
 // Данные уровней кампании
 const levelData = [
@@ -440,7 +441,7 @@ const GamePlay = () => {
   }
 
   return (
-    <div className="game-container">
+    <div className="game-container" style={{ backgroundImage: `url(${gameplayBackground})` }}>
       <div className="game-header">
         <h1>Level {levelInfo.id}: {levelInfo.name}</h1>
         <div className="game-progress">

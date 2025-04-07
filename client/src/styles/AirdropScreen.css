@@ -72,5 +72,25 @@
   .social-buttons {
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    gap: 1.5rem; /* Increased gap between icons */
+    margin-bottom: 2rem; /* Added margin below the social buttons */
+  }
+
+  .status-icon img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+
+  .back-button {
+    margin-top: 2rem; /* Ensure spacing above the back button */
+  }
+
+  .airdrop-countdown h2 {
+    text-align: center; /* Center the heading */
+    margin-top: 2rem; /* Increase spacing above the heading */
+  }
+
+  .airdrop-countdown p {
+    margin-bottom: 1.5rem; /* Add spacing below the text */
   }

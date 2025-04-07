@@ -1,6 +1,7 @@
 // client/src/components/Game/DiceRoller.js
 import React, { useState, useEffect } from 'react';
-import { DICE_VALUE_NAMES, DICE_IMAGES } from '../../constants/dice';
+import { DICE_VALUE_NAMES } from '../../constants/dice';
+import { DICE_IMAGES } from '../../assets';
 import '../../styles/DiceRoller.css';
 
 const DiceRoller = ({ dice, selectedIndex, onSelectDice, gameState }) => {

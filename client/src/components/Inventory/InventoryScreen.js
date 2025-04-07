@@ -8,6 +8,7 @@ import DeckBuilder from './DeckBuilder';
 import DiceSelection from './DiceSelection';
 import ItemDetails from '../Shop/ItemDetails';
 import '../../styles/InventoryScreen.css';
+import { inventoryBackground } from '../../assets';
 
 // Пример данных инвентаря (в будущем будут загружаться из API)
 const mockInventoryData = {
@@ -192,7 +193,7 @@ const InventoryScreen = () => {
   }
 
   return (
-    <div className="inventory-screen">
+    <div className="inventory-screen" style={{ backgroundImage: `url(${inventoryBackground})` }}>
       <h1 className="inventory-title">Inventory</h1>
       
       <div className="inventory-tabs">

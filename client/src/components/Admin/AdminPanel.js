@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import ItemCreator from './ItemCreator';
 import GameStatistics from './GameStatistics';
 import '../../styles/AdminPanel.css';
+import { adminBackground } from '../../assets';
 
 // Вкладки админ-панели
 const ADMIN_TABS = {
@@ -72,7 +73,7 @@ const AdminPanel = () => {
   };
 
   return (
-    <div className="admin-panel">
+    <div className="admin-panel" style={{ backgroundImage: `url(${adminBackground})` }}>
       <h1 className="admin-title">Admin Panel</h1>
       
       <div className="admin-tabs">

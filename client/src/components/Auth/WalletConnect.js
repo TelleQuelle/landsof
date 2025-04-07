@@ -51,46 +51,47 @@ const WalletConnect = () => {
 
   return (
     <div className="wallet-connect-container">
-      <img src={authBackground} alt="Auth Background" className="auth-background" />
-      <h1>Lands of Nanti</h1>
-      <p>Connect your wallet to begin the adventure</p>
-      
-      <div className="wallet-buttons">
-        <div className="wallet-button-wrapper" onClick={handleConnect}>
-          <WalletMultiButton />
+      <div className="wallet-connect-box">
+        <h1>Lands of Nanti</h1>
+        <p>Connect your wallet to begin the adventure</p>
+        
+        <div className="wallet-buttons">
+          <div className="wallet-button-wrapper" onClick={handleConnect}>
+            <WalletMultiButton />
+          </div>
+          
+          {!wallet && (
+            <div className="wallet-links">
+              <p>No wallet detected?</p>
+              <div className="wallet-redirect-buttons">
+                <button 
+                  className="wallet-redirect-button phantom" 
+                  onClick={() => redirectToWalletSite('phantom')}
+                >
+                  Get Phantom
+                </button>
+                <button 
+                  className="wallet-redirect-button solflare" 
+                  onClick={() => redirectToWalletSite('solflare')}
+                >
+                  Get Solflare
+                </button>
+              </div>
+            </div>
+          )}
         </div>
         
-        {!wallet && (
-          <div className="wallet-links">
-            <p>No wallet detected?</p>
-            <div className="wallet-redirect-buttons">
-              <button 
-                className="wallet-redirect-button phantom" 
-                onClick={() => redirectToWalletSite('phantom')}
-              >
-                Get Phantom
-              </button>
-              <button 
-                className="wallet-redirect-button solflare" 
-                onClick={() => redirectToWalletSite('solflare')}
-              >
-                Get Solflare
-              </button>
-            </div>
+        {error && <p className="error-message">{error}</p>}
+        
+        {connected && publicKey && (
+          <div className="wallet-info">
+            <p>Connected: {getShortAddress(publicKey)}</p>
+            <button className="disconnect-button" onClick={disconnect}>
+              Disconnect
+            </button>
           </div>
         )}
       </div>
-      
-      {error && <p className="error-message">{error}</p>}
-      
-      {connected && publicKey && (
-        <div className="wallet-info">
-          <p>Connected: {getShortAddress(publicKey)}</p>
-          <button className="disconnect-button" onClick={disconnect}>
-            Disconnect
-          </button>
-        </div>
-      )}
     </div>
   );
 };

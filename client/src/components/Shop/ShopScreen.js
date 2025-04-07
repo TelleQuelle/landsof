@@ -5,7 +5,7 @@ import { useWalletContext } from '../../context/WalletContext';
 import ShopItem from './ShopItem';
 import ItemDetails from './ItemDetails';
 import '../../styles/ShopScreen.css';
-import { silverCoin } from '../../assets';
+import { shopBackground, silverCoin, kingSkin, bloodDice, oracleKing, fortuneDice, witchSkin, goldenDwarf, emotionalDice, jokerBard } from '../../assets';
 
 // Типы предметов в магазине
 const ITEM_TYPES = {
@@ -23,7 +23,7 @@ const shopItems = [
     name: 'Royal King',
     description: 'A majestic version of the King card.',
     price: 50,
-    image: '/images/shop/king_skin.png',
+    image: kingSkin,
     rarity: 'Common',
     cardType: 'king'
   },
@@ -33,7 +33,7 @@ const shopItems = [
     name: 'Blood Dice',
     description: 'A dice with blood-red symbols.',
     price: 75,
-    image: '/images/shop/blood_dice.png',
+    image: bloodDice,
     rarity: 'Uncommon'
   },
   {
@@ -42,7 +42,7 @@ const shopItems = [
     name: 'Oracle King',
     description: 'A special King card that grants an extra turn when used in a combination.',
     price: 150,
-    image: '/images/shop/oracle_king.png',
+    image: oracleKing,
     rarity: 'Rare',
     cardType: 'king',
     effect: 'extra_turn'
@@ -53,7 +53,7 @@ const shopItems = [
     name: 'Fortune Dice',
     description: 'A special dice that gives a 1.25x score multiplier when used in a combination.',
     price: 200,
-    image: '/images/shop/fortune_dice.png',
+    image: fortuneDice,
     rarity: 'Epic',
     effect: 'score_multiplier'
   },
@@ -63,7 +63,7 @@ const shopItems = [
     name: 'Shadow Witch',
     description: 'A mysterious version of the Witch card.',
     price: 50,
-    image: '/images/shop/witch_skin.png',
+    image: witchSkin,
     rarity: 'Common',
     cardType: 'witch'
   },
@@ -73,7 +73,7 @@ const shopItems = [
     name: 'Golden Dwarf',
     description: 'A special Dwarf card that gives 1.5x points when used in a combination.',
     price: 100,
-    image: '/images/shop/golden_dwarf.png',
+    image: goldenDwarf,
     rarity: 'Rare',
     cardType: 'dwarf',
     effect: 'increased_points'
@@ -84,7 +84,7 @@ const shopItems = [
     name: 'Emotional Dice',
     description: 'A special dice that favors emotional vices: Lust, Discord, and Carelessness.',
     price: 150,
-    image: '/images/shop/emotional_dice.png',
+    image: emotionalDice,
     rarity: 'Rare',
     effect: 'emotional_vices'
   },
@@ -94,7 +94,7 @@ const shopItems = [
     name: 'Joker Bard',
     description: 'A special Bard card that can be used with any dice value.',
     price: 175,
-    image: '/images/shop/joker_bard.png',
+    image: jokerBard,
     rarity: 'Epic',
     cardType: 'bard',
     effect: 'universal'
@@ -177,7 +177,7 @@ const ShopScreen = () => {
   };
 
   return (
-    <div className="shop-screen">
+    <div className="shop-screen" style={{ backgroundImage: `url(${shopBackground})` }}>
       <h1 className="shop-title">Shop</h1>
       
       <div className="silver-balance">

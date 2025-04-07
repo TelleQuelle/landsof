@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { useWalletContext } from './context/WalletContext';
+import { mainBackground } from './assets';
 
 // Импорт компонентов для авторизации
 import WalletConnect from './components/Auth/WalletConnect';
@@ -73,7 +74,7 @@ const App = () => {
   };
 
   return (
-    <div className="app">
+    <div className="app" style={{ backgroundImage: `url(${mainBackground})` }}>
       <Routes>
         {/* Маршруты авторизации */}
         <Route path="/" element={!connected ? <WalletConnect /> : <Navigate to="/username" />} />
