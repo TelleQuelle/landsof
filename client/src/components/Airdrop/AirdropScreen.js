@@ -18,6 +18,7 @@ const AirdropScreen = () => {
   const [referralStats, setReferralStats] = useState(null);
   const [isCopied, setIsCopied] = useState(false);
   const [copyTimeout, setCopyTimeout] = useState(null);
+  const [isGeneratingCode, setIsGeneratingCode] = useState(false);
   
   // Загрузка данных при монтировании компонента
   useEffect(() => {

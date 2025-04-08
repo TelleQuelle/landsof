@@ -49,14 +49,18 @@ const RegisterWithReferral = () => {
     if (connected && publicKey) {
       setIsConnecting(false);
       
-      // Если пользователь авторизован, перенаправляем на экран ввода имени
-      if (isAuthenticated) {
+      // Вызываем функцию подключения с реферальным кодом
+      if (!isAuthenticated) {
+        // Импортируем connectWallet из контекста
+        const { connectWallet } = useWalletContext();
+        connectWallet(referralCode);
+      } else {
         navigate('/username');
       }
     } else if (!connected && isConnecting) {
       setIsConnecting(false);
     }
-  }, [connected, publicKey, isConnecting, isAuthenticated, navigate]);
+  }, [connected, publicKey, isConnecting, isAuthenticated, navigate, referralCode]);
   
   // Обработчик клика по кнопке подключения
   const handleConnect = () => {

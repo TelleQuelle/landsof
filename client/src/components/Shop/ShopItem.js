@@ -22,7 +22,9 @@ const ShopItem = ({ item, owned, onSelect }) => {
       onClick={onSelect}
       style={{ borderColor: rarityColor }}
     >
-      <div className="item-image-container">
+      <div 
+        className={`item-image-container ${item.type === 'dice_skin' || item.type === 'special_dice' ? 'dice' : 'card'}`}
+      >
         <img 
           src={item.image} 
           alt={item.name} 
