@@ -16,6 +16,9 @@ const ShopItem = ({ item, owned, onSelect }) => {
   // Определяем цвет рамки по редкости предмета
   const rarityColor = RARITY_COLORS[item.rarity] || RARITY_COLORS.Common;
   
+  // Проверяем, является ли предмет кубиком
+  const isDice = item.type === 'dice_skin' || item.type === 'special_dice';
+  
   return (
     <div 
       className={`shop-item ${owned ? 'owned' : ''}`}
@@ -23,7 +26,7 @@ const ShopItem = ({ item, owned, onSelect }) => {
       style={{ borderColor: rarityColor }}
     >
       <div 
-        className={`item-image-container ${item.type === 'dice_skin' || item.type === 'special_dice' ? 'dice' : 'card'}`}
+        className={`item-image-container ${isDice ? 'dice' : 'card'}`}
       >
         <img 
           src={item.image} 

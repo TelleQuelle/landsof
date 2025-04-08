@@ -1,67 +1,111 @@
 /* client/src/styles/ItemDetails.css */
 .item-details-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    padding: 2rem;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 2rem;
+}
+
+.item-details {
+  width: 100%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background-color: var(--color-darker);
+  border-radius: var(--radius-medium);
+  padding: 2rem;
+  position: relative;
+  border: 3px solid var(--color-secondary);
+  box-shadow: var(--shadow-large);
+}
+
+.item-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-secondary);
+}
+
+.item-content {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.buy-button {
+  padding: 0.75rem 2rem;
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  font-size: 1.25rem;
+  border-radius: var(--radius-medium);
+  transition: all var(--transition-fast);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: var(--shadow-small);
+}
+
+.buy-button:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+.confirmation-dialog {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: rgba(14, 14, 18, 0.7);
+  border-radius: var(--radius-medium);
+  text-align: center;
+  border: 1px solid var(--color-warning);
+}
+.item-image-large {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 300px;
+  width: 100%;
+}
+
+.item-image-large img {
+  max-width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+}
   
-  .item-details {
-    width: 100%;
-    max-width: 800px;
-    max-height: 90vh;
-    overflow-y: auto;
-    background-color: var(--color-darker);
-    border-radius: var(--radius-medium);
-    padding: 2rem;
-    position: relative;
-    border: 3px solid var(--color-secondary);
-    box-shadow: var(--shadow-large);
-  }
-  
-  .item-header {
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid var(--color-secondary);
-  }
-  
-  .item-content {
-    display: flex;
-    gap: 2rem;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
-  }
-  
-  .buy-button {
-    padding: 0.75rem 2rem;
-    background-color: var(--color-primary);
-    color: var(--color-text);
-    font-size: 1.25rem;
-    border-radius: var(--radius-medium);
-    transition: all var(--transition-fast);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    box-shadow: var(--shadow-small);
-  }
-  
-  .buy-button:hover {
-    background-color: var(--color-primary-dark);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-medium);
-  }
-  
-  .confirmation-dialog {
-    margin-top: 2rem;
-    padding: 1.5rem;
-    background-color: rgba(14, 14, 18, 0.7);
-    border-radius: var(--radius-medium);
-    text-align: center;
-    border: 1px solid var(--color-warning);
-  }
+.item-info-detailed {
+  flex: 1;
+  min-width: 300px;
+}
+
+.item-image-large.dice-image {
+  width: 250px;
+  height: 250px;
+  max-width: unset;
+  aspect-ratio: unset;
+  padding: 0; /* Remove padding to fit the fixed size */
+}
+
+.item-image-large.dice-image img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover; /* Ensure the image fills the container */
+}
+
+/* Особые стили для деталей карты */
+.item-image-large.card-image {
+  width: 100%;
+  max-width: 250px;
+  aspect-ratio: 2/3;
+  padding: 15px;
+}

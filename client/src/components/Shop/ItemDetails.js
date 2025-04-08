@@ -91,7 +91,7 @@ const ItemDetails = ({ item, owned, silver, onBuy, onClose }) => {
         </div>
         
         <div className="item-content">
-          <div className="item-image-large">
+          <div className={`item-image-large ${(item.type === 'dice_skin' || item.type === 'special_dice') ? 'dice-image' : 'card-image'}`}>
             <img src={item.image} alt={item.name} />
           </div>
           
