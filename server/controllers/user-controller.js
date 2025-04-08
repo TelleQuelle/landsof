@@ -1,6 +1,7 @@
 // server/controllers/user-controller.js
 const { User, UserProgress, UserInventory, ShopItem, LevelStat } = require('../models');
 const { sequelize } = require('../db/db-connection');
+const { addReferralBonus } = require('./referral-controller');
 
 // Получение профиля пользователя
 const getUserProfile = async (req, res) => {
@@ -278,6 +279,9 @@ const addSilver = async (req, res) => {
     //   source,
     //   balance: user.silver
     // });
+
+    // Начисляем реферальный бонус, если у пользователя есть реферрер
+    await addReferralBonus(id, amount, source || 'game_reward');
     
     return res.status(200).json({
       error: false,

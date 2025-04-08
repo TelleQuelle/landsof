@@ -5,6 +5,8 @@ const ShopItem = require('./shop-item');
 const UserInventory = require('./user-inventory');
 const LevelStat = require('./level-stat');
 const NFT = require('./nft');
+const Referral = require('./referral');
+const ReferralBonus = require('./referral-bonus');
 
 // Функция для инициализации моделей и их ассоциаций
 const initializeModels = (sequelize) => {
@@ -15,6 +17,8 @@ const initializeModels = (sequelize) => {
   UserInventory.init(sequelize);
   LevelStat.init(sequelize);
   NFT.init(sequelize);
+  Referral.init(sequelize);
+  ReferralBonus.init(sequelize);
   
   // Определение ассоциаций между моделями
   
@@ -62,6 +66,35 @@ const initializeModels = (sequelize) => {
   NFT.belongsTo(User, {
     foreignKey: 'userId'
   });
+
+  User.hasMany(Referral, {
+    foreignKey: 'referrerId',
+    as: 'referrals'
+  });
+  
+  User.hasOne(Referral, {
+    foreignKey: 'referredId',
+    as: 'referrer'
+  });
+  
+  Referral.belongsTo(User, {
+    foreignKey: 'referrerId',
+    as: 'referrerUser'
+  });
+  
+  Referral.belongsTo(User, {
+    foreignKey: 'referredId',
+    as: 'referredUser'
+  });
+  
+  Referral.hasMany(ReferralBonus, {
+    foreignKey: 'referralId',
+    as: 'bonuses'
+  });
+  
+  ReferralBonus.belongsTo(Referral, {
+    foreignKey: 'referralId'
+  });
 };
 
 module.exports = {
@@ -71,5 +104,7 @@ module.exports = {
   UserInventory,
   LevelStat,
   NFT,
+  Referral,
+  ReferralBonus,
   initializeModels
 };

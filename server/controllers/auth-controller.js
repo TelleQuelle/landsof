@@ -6,7 +6,7 @@ const { ADMIN_ADDRESSES } = require('../config');
 // Верификация подписи кошелька и аутентификация пользователя
 const authenticateWallet = async (req, res) => {
   try {
-    const { walletAddress, signature, message } = req.body;
+    const { walletAddress, signature, message, referralCode } = req.body;
     
     if (!walletAddress || !signature || !message) {
       return res.status(400).json({
@@ -42,14 +42,31 @@ const authenticateWallet = async (req, res) => {
         username: `Player_${Math.floor(Math.random() * 10000)}`, // Временное имя
         isAdmin,
         lastLoginAt: new Date(),
-        silver: 0 // Начальное количество серебра
+        silver: 0,
+        referralCode: null,
+        totalReferralBonus: 0
       });
       
       // Создаем прогресс пользователя
       await UserProgress.create({
-        userId: user.id,
-        // Остальные поля будут заполнены значениями по умолчанию
+        userId: user.id
       });
+      
+      // Если указан реферальный код, применяем его
+      if (referralCode) {
+        // Находим пользователя, которому принадлежит код
+        const referrer = await User.findOne({
+          where: { referralCode }
+        });
+        
+        if (referrer && referrer.id !== user.id) {
+          // Создаем новую реферальную связь
+          await Referral.create({
+            referrerId: referrer.id,
+            referredId: user.id
+          });
+        }
+      }
       
       // Получаем созданного пользователя с прогрессом
       user = await User.findOne({
@@ -71,7 +88,9 @@ const authenticateWallet = async (req, res) => {
         silver: user.silver,
         isAdmin: user.isAdmin,
         lastLoginAt: user.lastLoginAt,
-        progress: user.progress
+        progress: user.progress,
+        referralCode: user.referralCode,
+        totalReferralBonus: user.totalReferralBonus
       }
     });
   } catch (error) {

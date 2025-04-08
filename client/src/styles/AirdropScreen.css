@@ -94,3 +94,240 @@
   .airdrop-countdown p {
     margin-bottom: 1.5rem; /* Add spacing below the text */
   }
+
+  .referral-section {
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 2rem;
+    background-color: rgba(14, 14, 18, 0.85);
+    border-radius: var(--radius-medium);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-medium);
+    border: 1px solid var(--color-primary);
+  }
+  
+  .referral-section h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-primary);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--color-secondary);
+    padding-bottom: 0.5rem;
+  }
+  
+  .referral-subtitle {
+    font-size: 1rem;
+    font-weight: normal;
+    color: var(--color-accent);
+    margin-left: 0.5rem;
+  }
+  
+  .referral-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .referral-link-container {
+    background-color: rgba(20, 20, 30, 0.5);
+    border-radius: var(--radius-small);
+    padding: 1.25rem;
+    border: 1px solid var(--color-secondary);
+  }
+  
+  .referral-link-container h3 {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    color: var(--color-text);
+  }
+  
+  .referral-link-box {
+    display: flex;
+    margin-bottom: 0.5rem;
+    position: relative;
+  }
+  
+  .referral-link-input {
+    flex: 1;
+    font-size: 0.875rem;
+    padding: 0.75rem;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--color-secondary);
+    border-radius: var(--radius-small) 0 0 var(--radius-small);
+    color: var(--color-text);
+    font-family: monospace;
+  }
+  
+  .copy-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0 1rem;
+    background-color: var(--color-primary);
+    color: var(--color-text);
+    border: none;
+    border-radius: 0 var(--radius-small) var(--radius-small) 0;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+  
+  .copy-button:hover {
+    background-color: var(--color-primary-dark);
+  }
+  
+  .copy-button img {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .referral-explanation {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin-top: 0.5rem;
+  }
+  
+  .referral-stats {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .referral-stat-item {
+    flex: 1;
+    padding: 1rem;
+    background-color: rgba(20, 20, 30, 0.5);
+    border-radius: var(--radius-small);
+    border: 1px solid var(--color-secondary);
+    text-align: center;
+  }
+  
+  .referral-stat-item h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-text-muted);
+  }
+  
+  .referral-stat-value {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--color-text);
+    font-weight: 500;
+  }
+  
+  .silver-icon-small {
+    width: 16px;
+    height: 16px;
+    margin-right: 0.25rem;
+  }
+  
+  .referrals-list {
+    background-color: rgba(20, 20, 30, 0.5);
+    border-radius: var(--radius-small);
+    padding: 1.25rem;
+    border: 1px solid var(--color-secondary);
+  }
+  
+  .referrals-list h3 {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    color: var(--color-text);
+  }
+  
+  .referrals-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .referrals-table th {
+    text-align: left;
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--color-secondary);
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+  }
+  
+  .referrals-table td {
+    padding: 0.75rem 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--color-text);
+  }
+  
+  .referrals-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .bonus-cell {
+    display: flex;
+    align-items: center;
+  }
+  
+  .no-referrals-message {
+    text-align: center;
+    padding: 2rem;
+    background-color: rgba(20, 20, 30, 0.5);
+    border-radius: var(--radius-small);
+    border: 1px solid var(--color-secondary);
+  }
+  
+  .no-referrals-message h3 {
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+  }
+  
+  .no-referrals-message p {
+    color: var(--color-text-muted);
+  }
+  
+  .referred-by {
+    padding: 0.75rem;
+    background-color: rgba(122, 56, 56, 0.2);
+    border-radius: var(--radius-small);
+    border: 1px solid var(--color-primary);
+    text-align: center;
+  }
+  
+  .referred-by p {
+    margin: 0;
+    color: var(--color-text);
+  }
+  
+  .referred-by strong {
+    color: var(--color-accent);
+  }
+  
+  .generate-referral-code {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    background-color: rgba(20, 20, 30, 0.5);
+    border-radius: var(--radius-small);
+    border: 1px solid var(--color-secondary);
+  }
+  
+  .generate-referral-code p {
+    color: var(--color-text);
+  }
+  
+  .generate-button {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--color-primary);
+    color: var(--color-text);
+    border: none;
+    border-radius: var(--radius-medium);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    font-size: 1rem;
+  }
+  
+  .generate-button:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+  }

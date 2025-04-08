@@ -14,6 +14,9 @@ export const WalletContextProvider = ({ children }) => {
   const [walletAddress, setWalletAddress] = useState('');
   const [isAdminUser, setIsAdminUser] = useState(false);
   const [silver, setSilver] = useState(0);
+  // Новые состояния для реферальной системы
+  const [referralCode, setReferralCode] = useState(null);
+  const [totalReferralBonus, setTotalReferralBonus] = useState(0);
 
   // Обновляем состояние при изменении подключения к кошельку
   useEffect(() => {
@@ -40,6 +43,22 @@ export const WalletContextProvider = ({ children }) => {
         setSilver(0);
         localStorage.setItem(`silver_${publicKey.toString()}`, '0');
       }
+      
+      // Загружаем реферальный код пользователя
+      const storedReferralCode = localStorage.getItem(`referralCode_${publicKey.toString()}`);
+      if (storedReferralCode) {
+        setReferralCode(storedReferralCode);
+      }
+      
+      // Загружаем сумму реферальных бонусов
+      const storedReferralBonus = localStorage.getItem(`referralBonus_${publicKey.toString()}`);
+      if (storedReferralBonus) {
+        setTotalReferralBonus(parseInt(storedReferralBonus, 10));
+      } else {
+        // По умолчанию 0 бонусов для новых игроков
+        setTotalReferralBonus(0);
+        localStorage.setItem(`referralBonus_${publicKey.toString()}`, '0');
+      }
     } else {
       // Сбрасываем данные при отключении кошелька
       setWalletAddress('');
@@ -47,6 +66,8 @@ export const WalletContextProvider = ({ children }) => {
       setIsAuthenticated(false);
       setIsAdminUser(false);
       setSilver(0);
+      setReferralCode(null);
+      setTotalReferralBonus(0);
     }
   }, [connected, connecting, disconnecting, publicKey]);
 
@@ -67,6 +88,23 @@ export const WalletContextProvider = ({ children }) => {
       localStorage.setItem(`silver_${publicKey.toString()}`, newSilver.toString());
     }
   };
+  
+  // Функция для обновления реферального кода
+  const updateReferralCode = (code) => {
+    if (connected && publicKey) {
+      setReferralCode(code);
+      localStorage.setItem(`referralCode_${publicKey.toString()}`, code);
+    }
+  };
+  
+  // Функция для обновления общей суммы реферальных бонусов
+  const updateReferralBonus = (amount) => {
+    if (connected && publicKey) {
+      const newTotal = totalReferralBonus + amount;
+      setTotalReferralBonus(newTotal);
+      localStorage.setItem(`referralBonus_${publicKey.toString()}`, newTotal.toString());
+    }
+  };
 
   return (
     <WalletContext.Provider
@@ -76,8 +114,12 @@ export const WalletContextProvider = ({ children }) => {
         walletAddress,
         isAdminUser,
         silver,
+        referralCode,
+        totalReferralBonus,
         updateUsername,
-        updateSilver
+        updateSilver,
+        updateReferralCode,
+        updateReferralBonus
       }}
     >
       {children}

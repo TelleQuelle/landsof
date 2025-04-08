@@ -25,6 +25,7 @@ import mainMenuImage from './images/ui/main-menu.png';
 import comingSoonIcon from './images/ui/coming-soon-icon.png';
 import campaignImage from './images/ui/campaign-image.png';
 import adventureImage from './images/ui/adventure-image.png';
+import copyIcon from './images/ui/copy-icon.png';
 
 // Lore Images
 import lore1 from './images/lore/lore-1.png';
@@ -146,7 +147,8 @@ export {
   witchSkin,
   goldenDwarf,
   emotionalDice,
-  jokerBard
+  jokerBard,
+  copyIcon
 };
 
 // Note: Fonts will be imported in CSS

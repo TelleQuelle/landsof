@@ -3,18 +3,21 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useWalletContext } from '../../context/WalletContext';
 import { getShortAddress } from '../../utils/web3';
-import { airdropBackground, silverCoin, discordIcon, twitterIcon, comingSoonIcon } from '../../assets';
+import { airdropBackground, silverCoin, discordIcon, twitterIcon, comingSoonIcon, copyIcon } from '../../assets';
 import '../../styles/AirdropScreen.css';
 
 const AirdropScreen = () => {
   const navigate = useNavigate();
-  const { walletAddress, silver } = useWalletContext();
+  const { walletAddress, silver, referralCode, totalReferralBonus, updateReferralCode } = useWalletContext();
   const [ownedItems, setOwnedItems] = useState([]);
   const [stats, setStats] = useState({
     totalSilver: 0,
     campaignProgress: 0,
     itemsOwned: 0
   });
+  const [referralStats, setReferralStats] = useState(null);
+  const [isCopied, setIsCopied] = useState(false);
+  const [copyTimeout, setCopyTimeout] = useState(null);
   
   // Загрузка данных при монтировании компонента
   useEffect(() => {
@@ -53,9 +56,119 @@ const AirdropScreen = () => {
       });
     };
     
+    // Загрузка информации о реферальной программе
+    const loadReferralInfo = async () => {
+      try {
+        // Здесь должен быть запрос к API для получения информации о реферальной программе
+        // В будущем заменить на реальный запрос
+
+        const response = await fetch('/api/referral/info', {
+          headers: {
+            'walletAddress': walletAddress,
+            'signature': localStorage.getItem('signature'),
+            'message': localStorage.getItem('message')
+          }
+        });
+        
+        const data = await response.json();
+        
+        if (!data.error) {
+          setReferralStats(data.referralStats);
+          if (!referralCode && data.referralStats.referralCode) {
+            updateReferralCode(data.referralStats.referralCode);
+          }
+        } else {
+          console.error('Error loading referral info:', data.message);
+        }
+
+        setTimeout(() => {
+          const mockReferralStats = {
+            referralCode: referralCode || 'abc12345',
+            referralLink: `https://nanti.world/join?ref=${referralCode || 'abc12345'}`,
+            totalReferrals: 3,
+            totalBonus: totalReferralBonus || 250,
+            referralsList: [
+              {
+                username: "Player_4321",
+                joinedAt: "2025-03-15T10:30:00Z",
+                totalBonus: 150,
+                recentBonuses: [
+                  { amount: 30, source: "level_completion", date: "2025-04-01T15:45:00Z" },
+                  { amount: 20, source: "game_reward", date: "2025-03-25T12:20:00Z" }
+                ]
+              },
+              {
+                username: "Player_5678",
+                joinedAt: "2025-03-20T14:15:00Z",
+                totalBonus: 100,
+                recentBonuses: [
+                  { amount: 25, source: "level_completion", date: "2025-04-02T18:10:00Z" }
+                ]
+              }
+            ],
+            referrer: null // null если пользователь не был приглашен кем-то
+          };
+          
+          setReferralStats(mockReferralStats);
+          if (!referralCode) {
+            updateReferralCode(mockReferralStats.referralCode);
+          }
+        }, 500);
+      } catch (error) {
+        console.error('Error loading referral info:', error);
+      }
+    };
+    
     loadOwnedItems();
     loadStats();
-  }, [silver, ownedItems.length]);
+    
+    if (walletAddress) {
+      loadReferralInfo();
+    }
+  }, [walletAddress, silver, ownedItems.length, referralCode, totalReferralBonus, updateReferralCode]);
+  
+  // Функция для копирования реферальной ссылки
+  const copyReferralLink = () => {
+    if (!referralStats) return;
+    
+    const { referralLink } = referralStats;
+    navigator.clipboard.writeText(referralLink);
+    
+    // Очищаем предыдущий таймаут, если он есть
+    if (copyTimeout) {
+      clearTimeout(copyTimeout);
+    }
+    
+    // Показываем сообщение о копировании
+    setIsCopied(true);
+    
+    // Скрываем сообщение через 2 секунды
+    const timeout = setTimeout(() => {
+      setIsCopied(false);
+    }, 2000);
+    
+    setCopyTimeout(timeout);
+  };
+  
+  // Генерация реферального кода, если его нет
+  const generateReferralCode = () => {
+    // В будущем здесь будет запрос к API для генерации кода
+    // Пока используем моковые данные
+
+    const newCode = 'ref' + Math.random().toString(36).substring(2, 8);
+    updateReferralCode(newCode);
+    
+    const mockReferralStats = {
+      referralCode: newCode,
+      referralLink: `https://nanti.world/join?ref=${newCode}`,
+      totalReferrals: 0,
+      totalBonus: 0,
+      referralsList: [],
+      referrer: null
+    };
+    
+    setReferralStats(mockReferralStats);
+  };
   
   // Обработчик кнопки "назад"
   const handleBackClick = () => {
@@ -107,6 +220,99 @@ const AirdropScreen = () => {
         </div>
       </div>
       
+      {/* Реферальная система */}
+      <div className="referral-section">
+        <h2>Referral Program <span className="referral-subtitle">Earn 20% of referred players' silver!</span></h2>
+        
+        {referralStats ? (
+          <div className="referral-content">
+            <div className="referral-link-container">
+              <h3>Your Referral Link</h3>
+              <div className="referral-link-box">
+                <input 
+                  type="text" 
+                  value={referralStats.referralLink}
+                  readOnly
+                  className="referral-link-input"
+                />
+                <button 
+                  className="copy-button"
+                  onClick={copyReferralLink}
+                >
+                  <img src={copyIcon} alt="Copy" />
+                  {isCopied ? 'Copied!' : 'Copy'}
+                </button>
+              </div>
+              <p className="referral-explanation">
+                Share this link with friends. When they register and earn silver, you'll receive a 20% bonus!
+              </p>
+            </div>
+            
+            <div className="referral-stats">
+              <div className="referral-stat-item">
+                <h3>Total Referrals</h3>
+                <div className="referral-stat-value">{referralStats.totalReferrals}</div>
+              </div>
+              <div className="referral-stat-item">
+                <h3>Total Bonus Earned</h3>
+                <div className="referral-stat-value">
+                  <img src={silverCoin} alt="Silver" className="silver-icon-small" />
+                  <span>{totalReferralBonus || referralStats.totalBonus || 0}</span>
+                </div>
+              </div>
+            </div>
+            
+            {referralStats.referralsList && referralStats.referralsList.length > 0 ? (
+              <div className="referrals-list">
+                <h3>Your Referrals</h3>
+                <table className="referrals-table">
+                  <thead>
+                    <tr>
+                      <th>Player</th>
+                      <th>Joined</th>
+                      <th>Bonus Earned</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {referralStats.referralsList.map((ref, index) => (
+                      <tr key={index}>
+                        <td>{ref.username}</td>
+                        <td>{new Date(ref.joinedAt).toLocaleDateString()}</td>
+                        <td className="bonus-cell">
+                          <img src={silverCoin} alt="Silver" className="silver-icon-small" />
+                          <span>{ref.totalBonus}</span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              <div className="no-referrals-message">
+                <h3>No Referrals Yet</h3>
+                <p>Share your referral link with friends to start earning bonuses!</p>
+              </div>
+            )}
+            
+            {referralStats.referrer && (
+              <div className="referred-by">
+                <p>You were referred by: <strong>{referralStats.referrer.username}</strong></p>
+              </div>
+            )}
+          </div>
+        ) : (
+          <div className="generate-referral-code">
+            <p>Generate your referral link to start earning bonuses!</p>
+            <button 
+              className="generate-button"
+              onClick={generateReferralCode}
+            >
+              Generate Referral Link
+            </button>
+          </div>
+        )}
+      </div>
+      
       <div className="airdrop-status">
         <div className="status-icon">
           <img src={comingSoonIcon} alt="Coming Soon" />
@@ -137,6 +343,7 @@ const AirdropScreen = () => {
               <li>Items owned in your inventory</li>
               <li>Special achievements and NFTs</li>
               <li>Early player bonus</li>
+              <li>Referral program participation</li>
             </ul>
           </div>
           

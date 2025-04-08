@@ -1,0 +1,93 @@
+/* client/src/styles/RegisterWithReferral.css */
+.register-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .register-card {
+    background-color: rgba(10, 10, 15, 0.85);
+    padding: 3rem;
+    border-radius: var(--radius-large);
+    border: 1px solid var(--color-primary);
+    box-shadow: var(--shadow-large);
+    max-width: 500px;
+    width: 90%;
+  }
+  
+  .register-card h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text);
+    text-shadow: 0 0 15px rgba(122, 56, 56, 0.8);
+  }
+  
+  .referrer-info {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: rgba(122, 56, 56, 0.2);
+    border-radius: var(--radius-medium);
+    border: 1px dashed var(--color-primary);
+  }
+  
+  .referrer-info p {
+    margin: 0;
+    color: var(--color-text);
+  }
+  
+  .referrer-name {
+    font-weight: bold;
+    color: var(--color-accent);
+  }
+  
+  .connect-instruction {
+    margin-bottom: 2rem;
+  }
+  
+  .connect-instruction p {
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+  }
+  
+  .wallet-connect-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .wallet-button-wrapper {
+    width: 100%;
+    max-width: 280px;
+  }
+  
+  .referral-note {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    font-style: italic;
+  }
+  
+  .register-footer {
+    margin-top: 2rem;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+  
+  .register-footer a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    transition: color var(--transition-fast);
+  }
+  
+  .register-footer a:hover {
+    color: var(--color-accent-light);
+  }

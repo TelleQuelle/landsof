@@ -8,6 +8,7 @@ const userRoutes = require('./routes/user-routes');
 const shopRoutes = require('./routes/shop-routes');
 const adminRoutes = require('./routes/admin-routes');
 const nftRoutes = require('./routes/nft-routes');
+const referralRoutes = require('./routes/referral-routes');
 const { initializeModels } = require('./models');
 require('dotenv').config();
 
@@ -31,6 +32,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/shop', shopRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/nft', nftRoutes);
+app.use('/api/referral', referralRoutes);
 
 // Обработка маршрутов React в продакшене
 if (process.env.NODE_ENV === 'production') {

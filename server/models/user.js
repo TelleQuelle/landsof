@@ -51,7 +51,21 @@ class User extends Model {
         type: DataTypes.DATE,
         allowNull: false,
         defaultValue: DataTypes.NOW
+      },
+      referralCode: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        unique: true
+      },
+      totalReferralBonus: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 0,
+        validate: {
+          min: 0
+        }
       }
+
     }, {
       sequelize,
       modelName: 'user',

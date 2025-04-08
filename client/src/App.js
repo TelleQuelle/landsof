@@ -8,6 +8,7 @@ import { mainBackground } from './assets';
 // Импорт компонентов для авторизации
 import WalletConnect from './components/Auth/WalletConnect';
 import UsernameInput from './components/Auth/UsernameInput';
+import RegisterWithReferral from './components/Auth/RegisterWithReferral';
 
 // Импорт компонентов для начального тутториала
 import Tutorial from './components/Tutorial/Tutorial';
@@ -127,6 +128,7 @@ const App = () => {
         <Route path="/inventory" element={<ProtectedRoute><InventoryScreen /></ProtectedRoute>} />
         <Route path="/airdrop" element={<ProtectedRoute><AirdropScreen /></ProtectedRoute>} />
         <Route path="/about" element={<ProtectedRoute><AboutScreen /></ProtectedRoute>} />
+        <Route path="/join" element={<RegisterWithReferral />} />
         
         {/* Админ-панель */}
         <Route 
