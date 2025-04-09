@@ -69,14 +69,13 @@
   }
   
   .card-image {
-    width: 100%;
-    height: auto;
-    margin-bottom: 0.75rem;
-    border-radius: var(--radius-small);
-    border: 1px solid var(--color-secondary);
+    width: 140px;
+    margin-top: 0.01rem;
+    margin-bottom: 0.01rem;
   }
   
   .card-name {
+    display: none;
     font-size: 0.875rem;
     color: var(--color-text);
     text-align: center;

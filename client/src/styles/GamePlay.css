@@ -173,14 +173,12 @@
   }
   
   .dice-image {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 0.5rem;
+    width: 100px;
+    height: 100px;
   }
   
   .dice-name {
-    font-size: 0.875rem;
-    color: var(--color-text);
+    display: none;
   }
   
   .dice-placeholder {
@@ -294,17 +292,14 @@
   }
   
   .card-image {
-    width: 100%;
+    width: 140px;
     height: auto;
-    margin-bottom: 0.75rem;
-    border-radius: var(--radius-small);
-    border: 1px solid var(--color-secondary);
+    margin-top: 0.01rem;
+    margin-bottom: 0.01rem;
   }
   
   .card-name {
-    font-size: 0.875rem;
-    color: var(--color-text);
-    text-align: center;
+    display: none;
   }
   
   .card-status {
