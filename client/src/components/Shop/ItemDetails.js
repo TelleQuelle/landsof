@@ -83,7 +83,7 @@ const ItemDetails = ({ item, owned, silver, onBuy, onClose }) => {
         <button className="close-button" onClick={onClose}>×</button>
         
         <div className="item-header">
-          <h2 className="item-name" style={{ color: rarityColor }}>{item.name}</h2>
+          <h2 className="item-name" style={{ color: rarityColor }}>{ item.name}</h2>
           <div className="item-badges">
             <span className="item-type">{getItemTypeDisplay()}</span>
             <span className="item-rarity" style={{ backgroundColor: rarityColor }}>{item.rarity}</span>

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useWalletContext } from '../../context/WalletContext';
 import { getShortAddress } from '../../utils/web3';
-import { airdropBackground, silverCoin, discordIcon, twitterIcon, comingSoonIcon, copyIcon } from '../../assets';
+import { airdropBackground, silverCoin, discordIcon, twitterIcon, comingSoonIcon, copyIcon, AirdropBanner } from '../../assets';
 import '../../styles/AirdropScreen.css';
 
 const AirdropScreen = () => {
@@ -179,14 +179,6 @@ const AirdropScreen = () => {
   return (
     <div className="airdrop-screen" style={{ backgroundImage: `url(${airdropBackground})` }}>
       <h1 className="airdrop-title">Airdrop</h1>
-      
-      <div className="airdrop-banner">
-        <img 
-          src="/images/ui/airdrop-banner.png" 
-          alt="Airdrop Banner" 
-          className="airdrop-banner-image"
-        />
-      </div>
       
       <div className="airdrop-info">
         <div className="wallet-info">

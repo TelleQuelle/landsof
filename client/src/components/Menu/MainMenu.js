@@ -42,7 +42,7 @@ const MainMenu = () => {
       </div>
       
       <div className="main-content">
-        <h1 className="main-title">Lands of Nanti: {username}'s quest</h1>
+        <h1 className="main-title">{username}'s quest</h1>
         <p className="main-subtitle">Choose your path, wanderer... 🏰</p>
         
         <div className="silver-counter">
