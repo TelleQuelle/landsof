@@ -156,16 +156,34 @@ const GamePlay = () => {
   // Взятие карт из колоды
   const drawCards = useCallback((count = 3) => {
     const shuffled = shuffleDeck();
-    const drawn = shuffled.slice(0, count);
-    const remaining = shuffled.slice(count);
     
+    // Гарантируем уникальность карт
+    const drawn = [];
+    const uniqueTypes = new Set();
+    
+    let index = 0;
+    while (drawn.length < count && index < shuffled.length) {
+      const card = shuffled[index];
+      // Проверяем, что такой карты еще нет в выбранных
+      if (!uniqueTypes.has(card.type)) {
+        drawn.push(card);
+        uniqueTypes.add(card.type);
+      }
+      index++;
+    }
+    
+    const remaining = shuffled.filter(card => !drawn.includes(card));
     setDeck(remaining);
     setAvailableCards(drawn);
     return drawn;
   }, [shuffleDeck]);
   
   // Начало нового хода
+  // Начало нового хода
   const startNewTurn = useCallback(() => {
+    // Восстанавливаем полную колоду перед каждым ходом
+    setDeck([...BASE_DECK]);
+    
     setGameState('rolling');
     setSelectedDiceIndex(null);
     setSelectedCards([]);
@@ -274,7 +292,8 @@ const GamePlay = () => {
     if (gameState !== 'selecting') return;
     
     // Добавляем очки за ход к общему счету
-    setScore(score + turnScore);
+    const newTotalScore = score + turnScore;
+    setScore(newTotalScore);
     
     // Обновляем статистику
     setGameStats(prev => ({
@@ -284,14 +303,15 @@ const GamePlay = () => {
       totalScore: prev.totalScore + turnScore
     }));
     
+    // Проверяем, достигнута ли цель по очкам
+    if (newTotalScore >= levelInfo.goal.points) {
+      setGameState('win');
+      return;
+    }
+    
     // Переходим к следующему ходу или завершаем игру
     if (turn >= levelInfo.goal.turns) {
-      // Если достигнуто максимальное количество ходов, проверяем результат
-      if (score + turnScore >= levelInfo.goal.points) {
-        setGameState('win');
-      } else {
-        setGameState('lose');
-      }
+      setGameState(newTotalScore >= levelInfo.goal.points ? 'win' : 'lose');
     } else {
       setTurn(turn + 1);
       startNewTurn();

@@ -1,20 +1,17 @@
 /* client/src/styles/GamePlay.css */
 .game-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-color: var(--color-dark);
-    background-image: url('../assets/images/backgrounds/gameplay-background.png');
-    background-size: cover;
-    background-position: center;
-    padding: 1.5rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 1rem;
+  padding: 1.5rem;
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
   }
   
   .game-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 2rem;
+    grid-column: 1 / -1;
+    margin-bottom: 1rem;
   }
   
   .game-header h1 {
@@ -28,13 +25,10 @@
   }
   
   .game-progress {
-    width: 100%;
-    max-width: 800px;
-    background-color: rgba(14, 14, 18, 0.85);
-    border-radius: var(--radius-medium);
-    padding: 1rem;
-    box-shadow: var(--shadow-medium);
-    border: 1px solid var(--color-secondary);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: rgba(14, 14, 18, 0.95);
   }
   
   .goal-info {
@@ -65,26 +59,27 @@
   }
   
   .game-main {
-    display: flex;
-    flex: 1;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1rem;
+    height: calc(100vh - 150px);
+    overflow: hidden;
   }
   
   .game-board {
-    flex: 1;
-    min-width: 300px;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
+    overflow-y: auto;
+    max-height: 100%;
   }
   
   .game-sidebar {
-    width: 300px;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
+    overflow-y: auto;
+    max-height: 100%;
   }
   
   /* client/src/styles/DiceRoller.css */
@@ -106,25 +101,13 @@
   }
   
   .dice-container {
-    display: flex;
     justify-content: center;
-    gap: 2rem;
-    margin-bottom: 1.5rem;
+    gap: 1.5rem;
   }
   
   .dice {
-    width: 100px;
-    height: 100px;
-    background-color: rgba(20, 20, 30, 0.9);
-    border-radius: var(--radius-small);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all var(--transition-fast);
-    border: 2px solid var(--color-secondary);
-    box-shadow: var(--shadow-small);
-    position: relative;
+    width: 80px;
+    height: 80px;
   }
   
   .dice:hover {
@@ -173,8 +156,8 @@
   }
   
   .dice-image {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
   }
   
   .dice-name {
@@ -245,26 +228,24 @@
     letter-spacing: 0.05em;
   }
   
+  .selected-dice-display h3,
+  .valid-cards-display h3,
+  .point-value-display h3,
+  .multipliers-display h3,
+  .turn-score-display h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
   .cards-container {
-    display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
-    gap: 1.5rem;
+    gap: 0.75rem;
   }
   
   .card {
-    width: 120px;
-    background-color: rgba(20, 20, 30, 0.9);
-    border-radius: var(--radius-small);
-    padding: 0.75rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
-    transition: all var(--transition-fast);
-    border: 2px solid var(--color-secondary);
-    box-shadow: var(--shadow-small);
-    position: relative;
+    width: 100px;
+    padding: 0.5rem;
   }
   
   .card:hover {
@@ -292,10 +273,9 @@
   }
   
   .card-image {
-    width: 140px;
-    height: auto;
-    margin-top: 0.01rem;
-    margin-bottom: 0.01rem;
+    width: 100px;
+    margin-top: 0;
+    margin-bottom: 0;
   }
   
   .card-name {
@@ -362,6 +342,19 @@
     border: 1px solid var(--color-primary);
   }
   
+  .combination-display,
+  .game-stats,
+  .game-controls {
+  padding: 1rem;
+  }
+
+  .combination-display h2,
+  .game-stats h2,
+  .game-controls h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  }
+
   .combination-header {
     display: flex;
     justify-content: space-between;
@@ -539,13 +532,15 @@
     gap: 0.5rem;
   }
   
+  .valid-cards-list, .active-multipliers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
   .valid-card-name {
-    padding: 0.25rem 0.5rem;
-    background-color: rgba(66, 66, 85, 0.5);
-    border-radius: var(--radius-small);
-    font-size: 0.75rem;
-    color: var(--color-text);
-    border: 1px solid var(--color-secondary);
+    font-size: 0.8rem;
+    padding: 0.2rem 0.4rem;
   }
   
   .point-value-display {
@@ -649,30 +644,20 @@
   }
   
   .stat-group {
-    display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0.75rem;
+    gap: 0.5rem;
   }
   
   .stat-item {
-    padding: 0.75rem;
-    background-color: rgba(20, 20, 30, 0.5);
-    border-radius: var(--radius-small);
-    display: flex;
-    flex-direction: column;
-    border: 1px solid var(--color-secondary);
+    padding: 0.5rem;
   }
   
   .stat-label {
-    font-size: 0.875rem;
-    color: var(--color-text-muted);
-    margin-bottom: 0.25rem;
+    font-size: 0.8rem;
   }
   
   .stat-value {
-    font-size: 1.25rem;
-    color: var(--color-text);
-    font-weight: 500;
+    font-size: 1.1rem;
   }
   
   .progress-container {
@@ -729,12 +714,8 @@
   }
   
   .control-button {
-    padding: 0.75rem 1rem;
-    border-radius: var(--radius-medium);
-    font-size: 1.1rem;
-    transition: all var(--transition-fast);
-    text-align: center;
-    box-shadow: var(--shadow-small);
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
   }
   
   .control-button.draw-button {
