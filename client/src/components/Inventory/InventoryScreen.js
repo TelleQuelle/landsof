@@ -130,17 +130,28 @@ const InventoryScreen = () => {
       };
     }
     
-    // Обновляем выбранный скин или особую карту
-    if (isSpecial) {
-      updatedInventory.selectedCards[cardType].special = item ? item.id : null;
+    // Если item равен null, сбрасываем оба варианта
+    if (item === null) {
+      updatedInventory.selectedCards[cardType] = {
+        skin: null,
+        special: null
+      };
     } else {
-      updatedInventory.selectedCards[cardType].skin = item ? item.id : null;
+      // Обновляем выбранный вариант и сбрасываем другой
+      if (isSpecial) {
+        updatedInventory.selectedCards[cardType] = {
+          skin: null,
+          special: item.id
+        };
+      } else {
+        updatedInventory.selectedCards[cardType] = {
+          skin: item.id,
+          special: null
+        };
+      }
     }
     
     setInventoryData(updatedInventory);
-    
-    // В будущем здесь будет сохранение на сервер
-    // Пока сохраняем в localStorage
     localStorage.setItem('inventory_data', JSON.stringify(updatedInventory));
   };
   
@@ -155,9 +166,6 @@ const InventoryScreen = () => {
       updatedInventory.selectedDice.push(diceId);
       
       setInventoryData(updatedInventory);
-      
-      // В будущем здесь будет сохранение на сервер
-      // Пока сохраняем в localStorage
       localStorage.setItem('inventory_data', JSON.stringify(updatedInventory));
     }
   };
@@ -168,14 +176,13 @@ const InventoryScreen = () => {
     
     const updatedInventory = { ...inventoryData };
     
-    // Удаляем кубик по индексу
-    updatedInventory.selectedDice.splice(index, 1);
-    
-    setInventoryData(updatedInventory);
-    
-    // В будущем здесь будет сохранение на сервер
-    // Пока сохраняем в localStorage
-    localStorage.setItem('inventory_data', JSON.stringify(updatedInventory));
+    // Удаляем кубик только если останется минимум 2
+    if (updatedInventory.selectedDice.length > 2) {
+      updatedInventory.selectedDice.splice(index, 1);
+      
+      setInventoryData(updatedInventory);
+      localStorage.setItem('inventory_data', JSON.stringify(updatedInventory));
+    }
   };
   
   // Обработчик кнопки "назад"

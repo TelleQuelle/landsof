@@ -140,17 +140,62 @@ const GamePlay = () => {
   
   // Бросок кубиков
   const rollDice = useCallback(() => {
-    // В будущем здесь будут учитываться особые кубики с их вероятностями
-    // Пока используем базовый кубик с равномерным распределением
-    const diceValues = BASE_DICE.values;
+    // Получаем список выбранных кубиков из инвентаря
+    const inventoryData = JSON.parse(localStorage.getItem('inventory_data') || '{}');
+    let selectedDiceFromInventory = inventoryData.selectedDice || ['base_dice', 'base_dice'];
     
-    const rolled = [
-      diceValues[Math.floor(Math.random() * diceValues.length)],
-      diceValues[Math.floor(Math.random() * diceValues.length)]
-    ];
+    // Если в инвентаре менее 2 кубиков, добавляем базовые кубики
+    if (selectedDiceFromInventory.length < 2) {
+      selectedDiceFromInventory = ['base_dice', 'base_dice'];
+    }
     
-    setDice(rolled);
-    return rolled;
+    // Если кубиков больше 2, выбираем 2 случайных
+    let selectedDiceForRoll;
+    if (selectedDiceFromInventory.length > 2) {
+      // Перемешиваем массив кубиков
+      const shuffledDice = [...selectedDiceFromInventory].sort(() => Math.random() - 0.5);
+      // Берем первые два
+      selectedDiceForRoll = shuffledDice.slice(0, 2);
+    } else {
+      // Если выбрано ровно два кубика, используем их
+      selectedDiceForRoll = selectedDiceFromInventory;
+    }
+    
+    // Генерируем случайные значения для каждого выбранного кубика
+    const rolledValues = selectedDiceForRoll.map(diceId => {
+      let diceValues;
+      let probabilities;
+      
+      // Определяем вероятности в зависимости от типа кубика
+      if (diceId === 'base_dice') {
+        diceValues = BASE_DICE.values;
+        probabilities = BASE_DICE.probabilities;
+      } else if (SPECIAL_DICE[diceId]) {
+        diceValues = SPECIAL_DICE[diceId].values;
+        probabilities = SPECIAL_DICE[diceId].probabilities;
+      } else {
+        // Если тип кубика неизвестен, используем базовый
+        diceValues = BASE_DICE.values;
+        probabilities = BASE_DICE.probabilities;
+      }
+      
+      // Генерируем случайное значение с учетом вероятностей
+      const random = Math.random();
+      let cumulativeProbability = 0;
+      
+      for (const [value, probability] of Object.entries(probabilities)) {
+        cumulativeProbability += probability;
+        if (random <= cumulativeProbability) {
+          return value;
+        }
+      }
+      
+      // Если что-то пошло не так, используем равномерный выбор
+      return diceValues[Math.floor(Math.random() * diceValues.length)];
+    });
+    
+    setDice(rolledValues);
+    return rolledValues;
   }, []);
   
   // Взятие карт из колоды
@@ -218,6 +263,21 @@ const GamePlay = () => {
       const newSelectedCards = [...selectedCards, card];
       const newTurnScore = calculateCombinationPoints(newSelectedCards, diceValue);
       setTurnScore(newTurnScore);
+
+      // Проверяем достижение цели
+      if (score + newTurnScore >= levelInfo.goal.points) {
+        // Немедленно завершаем уровень победой
+        setScore(score + newTurnScore);
+        setGameState('win');
+
+        // Обновляем статистику
+        setGameStats(prev => ({
+          ...prev,
+          turns: prev.turns + 1,
+          combinations: prev.combinations + 1,
+          totalScore: prev.totalScore + newTurnScore
+        }));
+      }
     } else {
       // Если карта не подходит, игрок теряет все очки за ход
       setTurnScore(0);

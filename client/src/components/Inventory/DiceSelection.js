@@ -15,7 +15,6 @@ const DiceSelection = ({
   const isItemOwned = (itemId) => {
     if (typeof itemId === 'string') {
       // Для базовых кубиков и полученных из кампании (как "memento_mori")
-      // Проверяем, есть ли данный кубик в специальных и считаем, что игрок его получил
       return itemId === 'base_dice' || Object.keys(specialDice).includes(itemId);
     }
     
@@ -23,9 +22,9 @@ const DiceSelection = ({
     return ownedItems.includes(itemId);
   };
   
-  // Пропустить кубики, которые не принадлежат игроку
-  const filterOwnedItems = (items) => {
-    return Object.entries(items).filter(([key, _]) => isItemOwned(key));
+  // Подсчет количества кубиков определенного типа в выбранных
+  const countDiceByType = (diceId) => {
+    return selectedDice.filter(id => id === diceId).length;
   };
   
   // Получение информации о кубике по ID
@@ -46,39 +45,40 @@ const DiceSelection = ({
         </p>
         
         <div className="selected-dice-list">
-          {selectedDice.map((diceId, index) => {
-            const dice = getDiceInfo(diceId);
-            
-            return (
-              <div key={index} className="selected-dice-item">
-                <img 
-                  src={dice.image}
-                  alt={dice.name}
-                  className="dice-image"
-                />
-                <div className="dice-info">
-                  <div className="dice-name">{dice.name}</div>
+          {selectedDice.length > 0 ? (
+            selectedDice.map((diceId, index) => {
+              const dice = getDiceInfo(diceId);
+              
+              return (
+                <div key={index} className="selected-dice-item">
+                  <img 
+                    src={dice.image}
+                    alt={dice.name}
+                    className="dice-image"
+                  />
+                  <div className="dice-info">
+                    <div className="dice-name">{dice.name}</div>
+                    
+                    {dice.effect && (
+                      <div className="dice-effect-badge">
+                        Special
+                      </div>
+                    )}
+                  </div>
                   
-                  {dice.effect && (
-                    <div className="dice-effect-badge">
-                      Special
-                    </div>
-                  )}
+                  <button 
+                    className="remove-dice-button"
+                    onClick={() => onRemoveDice(index)}
+                    disabled={selectedDice.length <= 2}
+                  >
+                    Remove
+                  </button>
                 </div>
-                
-                <button 
-                  className="remove-dice-button"
-                  onClick={() => onRemoveDice(index)}
-                >
-                  Remove
-                </button>
-              </div>
-            );
-          })}
-          
-          {selectedDice.length === 0 && (
+              );
+            })
+          ) : (
             <div className="no-dice-message">
-              <p>No dice selected. Add at least 1 dice to play.</p>
+              <p>No dice selected. Add at least 2 dice to play.</p>
             </div>
           )}
           
@@ -98,10 +98,7 @@ const DiceSelection = ({
           <div className="dice-category">
             <h3>Basic Dice</h3>
             <div className="dice-grid">
-              <div 
-                className="dice-item"
-                onClick={() => selectedDice.length < 5 && onSelectDice('base_dice')}
-              >
+              <div className="dice-item">
                 <img 
                   src={baseDice.image}
                   alt={baseDice.name}
@@ -110,14 +107,17 @@ const DiceSelection = ({
                 <div className="dice-info">
                   <div className="dice-name">{baseDice.name}</div>
                   <div className="dice-description">{baseDice.description}</div>
+                  
+                  {countDiceByType('base_dice') > 0 && (
+                    <div className="dice-count">
+                      Currently selected: {countDiceByType('base_dice')}
+                    </div>
+                  )}
                 </div>
                 
                 <button 
                   className={`add-dice-button ${selectedDice.length >= 5 ? 'disabled' : ''}`}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    selectedDice.length < 5 && onSelectDice('base_dice');
-                  }}
+                  onClick={() => selectedDice.length < 5 && onSelectDice('base_dice')}
                   disabled={selectedDice.length >= 5}
                 >
                   Add to Selection
@@ -130,11 +130,10 @@ const DiceSelection = ({
           <div className="dice-category">
             <h3>Special Dice</h3>
             <div className="dice-grid">
-              {filterOwnedItems(specialDice).map(([key, dice]) => (
+              {Object.entries(specialDice).filter(([key, _]) => isItemOwned(key)).map(([key, dice]) => (
                 <div 
                   key={key}
                   className="dice-item special"
-                  onClick={() => selectedDice.length < 5 && onSelectDice(key)}
                 >
                   <img 
                     src={dice.image}
@@ -144,6 +143,12 @@ const DiceSelection = ({
                   <div className="dice-info">
                     <div className="dice-name">{dice.name}</div>
                     <div className="dice-description">{dice.description}</div>
+                    
+                    {countDiceByType(key) > 0 && (
+                      <div className="dice-count">
+                        Currently selected: {countDiceByType(key)}
+                      </div>
+                    )}
                   </div>
                   
                   <div className="dice-effect-badge">
@@ -162,10 +167,7 @@ const DiceSelection = ({
                   
                   <button 
                     className={`add-dice-button ${selectedDice.length >= 5 ? 'disabled' : ''}`}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      selectedDice.length < 5 && onSelectDice(key);
-                    }}
+                    onClick={() => selectedDice.length < 5 && onSelectDice(key)}
                     disabled={selectedDice.length >= 5}
                   >
                     Add to Selection
@@ -173,7 +175,7 @@ const DiceSelection = ({
                 </div>
               ))}
               
-              {filterOwnedItems(specialDice).length === 0 && (
+              {Object.entries(specialDice).filter(([key, _]) => isItemOwned(key)).length === 0 && (
                 <div className="no-dice-message">
                   <p>No special dice available. Complete campaign levels or purchase from the shop.</p>
                 </div>
